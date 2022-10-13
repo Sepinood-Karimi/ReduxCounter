@@ -5,8 +5,8 @@ import {counterActions} from "../store/counterSlice";
 const Counter = () => {
     const value = 10;
 
-    const counterSlice = useSelector(state=>state.counter);
-    const showSlice = useSelector(state=>state.show)
+    const counterSlice = useSelector(state=>state.counter.counter);
+    const showSlice = useSelector(state=>state.counter.show)
 
     const dispatch = useDispatch();
 
