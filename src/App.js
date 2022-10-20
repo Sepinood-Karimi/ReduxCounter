@@ -1,17 +1,24 @@
 import './App.css';
 import Header from "./components/Header";
 import Counter from "./components/Counter";
-import {Provider} from "react-redux";
-import store from "./store";
+import {useSelector} from "react-redux";
 import Auth from "./components/Auth";
+import Notification from "./components/UI/Notification";
 
 function App() {
+    const notification = useSelector(state => state.ui.notification);
     return (
-        <Provider store={store}>
+        <>
+            {notification &&
+                <Notification
+                    status={notification.status}
+                    title={notification.title}
+                    message={notification.message}
+                />}
             <Header/>
             <Auth/>
             <Counter/>
-        </Provider>
+        </>
     );
 }
 
