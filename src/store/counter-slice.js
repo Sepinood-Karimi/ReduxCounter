@@ -18,6 +18,9 @@ export const counterSlice = createSlice({
         INCREASE(state,action){
             state.counter = state.counter + action.payload;
         },
+        DECREASE(state,action){
+            state.counter = state.counter - action.payload
+        },
         TOGGLE(state){
             state.show = !state.show;
         }

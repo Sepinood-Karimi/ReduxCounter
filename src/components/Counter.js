@@ -1,6 +1,6 @@
 import classes from  './Counter.module.css'
 import {useDispatch, useSelector} from "react-redux";
-import {counterActions} from "../store/counterSlice";
+import {counterActions} from "../store/counter-slice";
 
 const Counter = () => {
     const value = 10;
@@ -19,6 +19,9 @@ const Counter = () => {
     const increaseHandler = () => {
         dispatch(counterActions.INCREASE(value))
     };
+    const decreaseHandler = () => {
+        dispatch(counterActions.DECREASE(value))
+    };
     const toggleHandler = () => {
         dispatch(counterActions.TOGGLE())
     };
@@ -30,7 +33,10 @@ const Counter = () => {
             <div>
                 <button onClick={incrementHandler}> Increment </button>
                 <button onClick={decrementHandler}> Decrement </button>
+            </div>
+            <div>
                 <button onClick={increaseHandler}> Increase By {value}  </button>
+                <button onClick={decreaseHandler}> Decrease By {value}  </button>
             </div>
             <button onClick={toggleHandler}>Toggle Counter</button>
         </main>
