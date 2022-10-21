@@ -23,7 +23,7 @@ const Auth = () => {
     useEffect(()=>{
         if (loginInfo)
             dispatch(authActions.login(loginInfo));
-    },[dispatch,token,loginInfo]);
+    },[]);
 
     const loginHandler = async (event) => {
         event.preventDefault();
