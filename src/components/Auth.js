@@ -24,7 +24,7 @@ const Auth = () => {
     };
 
     const signupToggle = () => {
-        setIsLogin(false);
+        setIsLogin(!isLogin);
     };
 
     return (
@@ -40,7 +40,8 @@ const Auth = () => {
                         <input type='password' id='password' ref={passwordInputRef}/>
                     </div>
                     <button>{isLogin ? 'Login' : 'Signup'}</button>
-                    <p onClick={signupToggle}> Dont have an account ? create one. </p>
+                    {isLogin && <p onClick={signupToggle}> Dont have an account ? create one. </p>}
+                    {!isLogin && <p onClick={signupToggle}> Have An Account ? Login.</p>}
                 </form>
             </section>
         </main>
