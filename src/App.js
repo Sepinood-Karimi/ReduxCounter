@@ -13,7 +13,7 @@ function App() {
 
     return (
         <Suspense fallback={<p> Please Be Patient We Are Loading Page... </p>}>
-            {notification &&
+            {notification && isLoggedIn &&
                 <Notification
                     status={notification.status}
                     title={notification.title}
