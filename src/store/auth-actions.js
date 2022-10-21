@@ -43,6 +43,9 @@ export const sendLoginData = (email,password) => {
                 message : e.message
             }));
         }
+        setTimeout(()=>{
+            dispatch(uiActions.clearNotify());
+        },60000)
     }
 };
 
@@ -88,5 +91,8 @@ export const sendSignupData = (email,password) => {
                 message : e.message
             }));
         }
+        setTimeout(()=>{
+            dispatch(uiActions.clearNotify());
+        },60000)
     }
 };
