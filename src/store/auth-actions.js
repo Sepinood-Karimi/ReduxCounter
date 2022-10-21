@@ -1,4 +1,5 @@
 import {uiActions} from "./ui-slice";
+import {authActions} from "./auth-slice";
 
 export const sendLoginData = (email,password) => {
     return async (dispatch) =>{
@@ -29,6 +30,7 @@ export const sendLoginData = (email,password) => {
         }
         try{
             const loginInfo= await sendLoginRequest();
+            dispatch(authActions.login(loginInfo));
             dispatch(uiActions.notify({
                 status : 'success',
                 title : 'Successful Login',
