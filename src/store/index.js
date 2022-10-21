@@ -10,13 +10,13 @@ const persistConfig = {
     storage,
     whitelist : ['auth']
 };
-const cmReducer = combineReducers({
+const combineReducer = combineReducers({
     counter: counterSlice.reducer,
     ui: uiSlice.reducer,
     auth: authSlice.reducer
 });
 
-const persistedReducer = persistReducer(persistConfig,cmReducer);
+const persistedReducer = persistReducer(persistConfig,combineReducer);
 
 
 const store = configureStore({
