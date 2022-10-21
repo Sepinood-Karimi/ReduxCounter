@@ -1,9 +1,10 @@
+import React,{Suspense} from "react";
 import './App.css';
 import Header from "./components/Header";
-import Counter from "./components/Counter";
 import {useSelector} from "react-redux";
-import Auth from "./components/Auth";
-import Notification from "./components/UI/Notification";
+const Counter = React.lazy(()=>import('./components/Counter'));
+const Auth = React.lazy(()=>import("./components/Auth"));
+const Notification = React.lazy(()=>import("./components/UI/Notification"));
 
 function App() {
     const notification = useSelector(state => state.ui.notification);
@@ -11,7 +12,7 @@ function App() {
 
 
     return (
-        <>
+        <Suspense fallback={<p> Please Be Patient We Are Loading Page... </p>}>
             {notification &&
                 <Notification
                     status={notification.status}
@@ -21,7 +22,7 @@ function App() {
             <Header/>
             {!isLoggedIn && <Auth/>}
             {isLoggedIn && <Counter/>}
-        </>
+        </Suspense>
     );
 }
 
