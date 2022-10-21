@@ -1,7 +1,7 @@
 import classes from './Auth.module.css';
 import {useRef, useState} from "react";
 import {useDispatch} from "react-redux";
-import {sendLoginData} from "../store/auth-actions";
+import {sendLoginData, sendSignupData} from "../store/auth-actions";
 
 
 const Auth = () => {
@@ -18,6 +18,9 @@ const Auth = () => {
         const enteredEmail = emailInputRef.current.value;
         const enteredPassword = passwordInputRef.current.value;
         dispatch(sendLoginData(enteredEmail,enteredPassword));
+        if(!isLogin){
+            dispatch(sendSignupData(enteredEmail,enteredPassword));
+        }
     };
 
     const signupToggle = () => {
