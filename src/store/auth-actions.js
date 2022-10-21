@@ -45,7 +45,10 @@ export const sendLoginData = (email,password) => {
         }
         setTimeout(()=>{
             dispatch(uiActions.clearNotify());
-        },60000)
+        },60000);
+        setTimeout(()=>{
+            dispatch(authActions.logout());
+        },3600000);
     }
 };
 
@@ -93,6 +96,9 @@ export const sendSignupData = (email,password) => {
         }
         setTimeout(()=>{
             dispatch(uiActions.clearNotify());
-        },60000)
+        },60000);
+        setTimeout(()=>{
+            dispatch(authActions.logout());
+        },3600000);
     }
 };
