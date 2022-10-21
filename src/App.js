@@ -7,6 +7,8 @@ import Notification from "./components/UI/Notification";
 
 function App() {
     const notification = useSelector(state => state.ui.notification);
+    const isLoggedIn = useSelector(state=>state.auth.isLoggedIn);
+
     return (
         <>
             {notification &&
@@ -17,7 +19,7 @@ function App() {
                 />}
             <Header/>
             <Auth/>
-            <Counter/>
+            {isLoggedIn && <Counter/>}
         </>
     );
 }

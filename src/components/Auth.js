@@ -1,7 +1,8 @@
 import classes from './Auth.module.css';
-import {useRef, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {useDispatch} from "react-redux";
 import {sendLoginData, sendSignupData} from "../store/auth-actions";
+import {authActions} from "../store/auth-slice";
 
 
 const Auth = () => {
@@ -12,6 +13,17 @@ const Auth = () => {
     const [isLogin, setIsLogin] = useState(true);
 
     const dispatch = useDispatch();
+
+    const token = localStorage.getItem('token');
+
+    const loginInfo = {
+        idToken : token
+    };
+
+    useEffect(()=>{
+        if (loginInfo)
+            dispatch(authActions.login(loginInfo));
+    },[dispatch,token,loginInfo]);
 
     const loginHandler = async (event) => {
         event.preventDefault();
