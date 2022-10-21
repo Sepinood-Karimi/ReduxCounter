@@ -10,12 +10,10 @@ const authSlice = createSlice({
     reducers: {
         login(state, action) {
             state.token = action.payload.idToken;
-            localStorage.setItem('token',state.token);
             state.isLoggedIn = true;
         },
         logout(state) {
             state.token = '';
-            localStorage.removeItem('token');
             state.isLoggedIn = false;
         }
     }
