@@ -1,9 +1,11 @@
 import classes from './Header.module.css';
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {authActions} from "../store/auth-slice";
 
 const Header = () => {
     const dispatch = useDispatch();
+
+    const isLoggedIn = useSelector(state=>state.auth.isLoggedIn);
 
     const logoutHandler = () => {
         dispatch(authActions.logout());
@@ -14,7 +16,7 @@ const Header = () => {
             <nav>
                 <ul>
                     <li>
-                        <button onClick={logoutHandler}>Logout</button>
+                        {isLoggedIn && <button onClick={logoutHandler}>Logout</button>}
                     </li>
                 </ul>
             </nav>
