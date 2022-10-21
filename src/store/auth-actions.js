@@ -66,18 +66,20 @@ export const sendSignupData = (email,password) => {
                 })
             });
             const data = await response.json();
-            console.log(data);
+
             if(!response.ok){
                 let error = data.error.message;
                 throw new Error(error);
             }
+            return data;
         }
         try{
-            await sendSignupRequest();
+            const signupData = await sendSignupRequest();
+            dispatch(authActions.login(signupData));
             dispatch(uiActions.notify({
                 status : 'success',
-                title : 'Successful Login',
-                message : 'You Successfully Logged In!'
+                title : 'Successful Signup',
+                message : 'You Successfully Signed Up!'
             }));
         }catch (e) {
             dispatch(uiActions.notify({
