@@ -21,7 +21,7 @@ const Auth = () => {
     };
 
     useEffect(()=>{
-        if (loginInfo)
+        if (token)
             dispatch(authActions.login(loginInfo));
     },[]);
 
