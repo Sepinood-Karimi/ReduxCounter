@@ -19,7 +19,7 @@ function App() {
                     message={notification.message}
                 />}
             <Header/>
-            <Auth/>
+            {!isLoggedIn && <Auth/>}
             {isLoggedIn && <Counter/>}
         </>
     );
